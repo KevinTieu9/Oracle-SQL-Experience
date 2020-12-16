@@ -1,0 +1,31 @@
+Kevin Tieu 
+Date Remodified:11-15-2020
+CS 325 - Fall 2020
+
+Antique Celebrity Sounds Instruments
+
+Antique Celebrity Sounds Instruments is a new shop in Humboldt providing quality musical instruments, music lessons, and instrument repair. 
+They provide both beginners' level instruments and higher-level instruments; one can rent a beginner's level instrument, or purchase an instrument. 
+Both group and individual lessons are available, typically weekly. Instruments can be left for repair or other service (such as cleaning, string replacement, etc.) 
+They also hold monthly music receptions featuring local musicians where they use an antique or celebrity instrument voted on by customers. 
+They also maintain a log of instruments donated by celebrities or fans.
+
+Questions:
+1: Is the customer a Beginner, Intermediate, or Advanced Musician?
+
+2: Did the customer rented or purchase the instrument.
+
+3: What celebrity or fans have donated their instrument to the shop.
+
+4: What service is being asked if left for a type of repair(cleaning, parts repair, fine tuning?)
+
+5: What/who is on the calender for the monthly music reception for local musicians.
+
+Business Rules:
+1: Customers can choose to pay after servicing their instrument, but the customer needs to pay before getting his/her instrument back.
+
+2: Customers can pay every week or once a month for the lessons.
+
+3: Customers cannot rent, continue with lessons, or have their instrument serviced if there are overdue charges.
+
+4: Customers can choose to pay only in Cash, Credit/Debit Card, or Rent, but they can also choose to mix and match (half Cash and half Credit Card as an example.)

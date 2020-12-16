@@ -1,0 +1,64 @@
+Kevin Tieu
+CS 325 - Fall 2020
+November 15, 2020
+
+
+Customer
+-----------
+CustomerName varchar2(20),
+CustomerEmail varchar2(20),
+CustomerPhone varchar2(20),
+CustomerAddress varchar2(20),
+PRIMARY KEY (CustomerName)
+
+Instrument
+-----------
+InstrumentName varchar2(20), 
+InstrumentLevel varchar2(20), 
+Price Decimal(3, 2), 
+PRIMARY KEY (InstrumentName)
+
+InstrumentRepair
+-----------
+InstrumentType varchar2(20),
+RepairType  varchar2(20),
+RepairRequestDate date,
+RepairFinishDate date,
+Price decimal(3, 2),
+PRIMARY KEY (InstrumentType)
+
+MusicLesson
+-----------
+CompetencyLevel varchar2(20),
+LessonType  varchar2(20),
+ClassSize int,
+ClassStartDate date,
+ClassEndDate date,
+Price Decimal(3, 2),
+PRIMARY KEY (CompetencyLevel)
+
+PaymentType
+-----------
+Cash decimal(3, 2),
+CreditCard varchar2(20),
+Rental int,
+PRIMARY KEY (Cash)
+
+MusicReception
+-----------
+MusicianName varchar2(20),
+InstrumentName varchar2(20),
+CustomerParticipant varchar(20),
+VoteCountTotal INT,
+MonthOf INT,
+ReceptionDate date,
+PRIMARY KEY (MusicianName),
+FOREIGN KEY (InstrumentName) references Donationlog(InstrumentType)
+FOREIGN KEY (CustomerParticipant) references Customer(CustomerName)
+
+DonationLog
+-----------
+DonatorName varchar2(20),
+InstrumentType varchar2(20),
+DonationDate DATE,
+PRIMARY KEY (DonatorName)
