@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--Kevin Tieu 
+    Spring 2021
+	CS 328
+    Homework 5, Problem 2-->
+
+<!--Fish.jpg is the property of Kevin Tieu, All Rights Reserved unless asked for permission to be used-->
+<html>
+    <head>
+        <title>Are You Smart?</title>
+
+        <!--CSS Portion of the document-->
+        <style>
+            body {
+            background-color: green;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            
+            #main {
+            width: 80%;
+            max-width: 950px;
+            border: 1px gray solid;
+            margin: auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            }
+            
+            #header {
+            margin-top: 0;
+            border: 2px solid black;
+            padding: 5px;
+            height: 250px;
+            background: black ;
+            background-image: url("Images/Fish.jpg");
+            color: black;
+            }
+
+            label {
+            display: block;
+            }
+
+            input {
+            width: 30px;
+            margin-left: 20px;
+            }
+
+            h2 {
+            clear: both;
+            padding-top: 20px;
+            }
+
+            button {
+            width: 100px;
+            margin-top: 20px;
+            }
+
+            h1 {text-align: center;}
+
+        </style>
+        <!--Javascript Portion of the Document-->
+        <script>
+
+
+        let playerNameWidget = document.getElementById("playerName");
+        let difficultyLevelWidget = document.getElementById("diffLevel");
+                
+        if (localStorage.getItem("playerName")) {                
+        playerNameWidget.value = localStorage.getItem("playerName");
+        difficultyLevelWidget.value = localStorage.getItem("difficultyLevel");
+        }
+                
+        document.getElementById("saveBtn").addEventListener("click", function() {
+        localStorage.setItem("playerName", playerNameWidget.value);
+        localStorage.setItem("difficultyLevel", difficultyLevelWidget.value);
+        });
+        function GradingFunction(){
+
+            //Checks if see if the two True/False Questions are checked and checks if the text box is empty
+            //It will alert the user until all questions are answered. If not all questions are answered it will
+            //Alert the user that not all questions have been answered. It will return false so that the user can 
+            //continue the quiz without all fields refreshed.
+            if ((!document.querySelector('input[name = "two"]:checked'))  || (!document.querySelector('input[name = "six"]:checked')) || (document.getElementById("HSUCity").value == "")){
+
+                alert("You have not answer everything");
+                return false
+            }
+            //Answer 1 and 2 uses parse int and it grabs the 1 or 0 value because of querySelector
+			var Answer1 = parseInt(document.querySelector('input[name = "two"]:checked').value);	
+            var Answer2 = parseInt(document.querySelector('input[name = "six"]:checked').value);
+            //Declaring City Variable before doing a check on Arcata
+            var City;
+            //The variable that will be compared to is ARCATA, whatever the user types, as long as it is Arcata
+            //Whether it is upper case or lower case, this will catch it
+            //Anything the user types is set to all uppercase for easy equivalency.
+            //If they are comparible, City is set to 1, otherwise City is Set to 0
+            var arcata = "ARCATA";
+            if ((document.getElementById( "HSUCity" ).value.toUpperCase()) == arcata.toUpperCase()){
+                City = 1;
+            }
+            else{
+                City = 0;
+            }
+            //result is calculated by adding Answer1, Answer2, and City (which is Answer 3)
+            var result = Answer1 + Answer2 + City;
+            //Result is set to the Element ID of Grade (which will show 0, 1, 2, or 3 depending on user answers)
+            document.getElementById("grade").innerHTML = result;
+            //If statement to output a string telling the user whether they are smart or not
+            if (result == 0) {result2 = "You Are Not Smart"};
+            if (result == 1) {result2 = "You Are Not Smart Enough!"};
+            if (result == 2) {result2 = "Almost!"};
+            if (result == 3) {result2 = "You Are Smart!"};
+            //Result2 string is set based on result integer and sets it to the grade2 Element ID
+            document.getElementById("grade2").innerHTML = result2;    
+            //Used to prevent the page from reloading after getting the data and sending it back for the user to see.
+            return false
+            }     
+         </script>
+    </head>
+    <body>
+
+        <div id="main">
+        <div id="header">
+        <h1>Are You Smart?</h1>
+        </div>
+        <!--form to ask the questions. Two True/False questions, and one Typing question
+            True gives a Value of 1, False gives 0, getting the typing portion wrong is 0, right = 1 -->
+        <h1>Answer these Questions to Find out!</h1>        
+            <form id="QuizForm" method="get" action="destination.php">
+            <!--First True/False Question-->
+            <p>True or False? 2+2 = 4:</p>
+                <input id type="radio" name="two" value="1"/>True</label>
+                <input type="radio" name="two" value="0"/>False</label>
+            <!--Second True/False Question-->
+            <p>True or False? 6x6 = 30:</p>
+                <input type="radio" name="six" value="0">True</label>
+                <input type="radio" name="six" value="1"/>False</label>
+            <!--Text-based Question-->
+            <p>What city is HSU located in?</p>
+                <input id = "HSUCity" type ="text" name ="HSU" placeholder="Input City" style=width:280px></label>
+                <!--Grab the data on click-->
+                <p><button type="submit" value="Submit" onclick="return GradingFunction()">Submit</button></p>
+            </form>
+        
+            <!--Output portion for total value in the quiz as 
+                well as telling you whether you are smart or not-->
+            <p><b>Your grade is:</b> <span id="grade">__</span></p>
+            <p><b>Are you smart?:</b> <span id="grade2">__</span><p>
+        </div>
+
+    </body>
+</html>
