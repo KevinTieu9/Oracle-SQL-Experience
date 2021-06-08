@@ -13,8 +13,8 @@
         last modified: 2018-03-12
     -----*/
 	
-$usr = "kt216";
-$pwd = "kT11559761";
+$usr = "user";
+$pwd = "password";
 
     function hsu_conn($usr, $pwd)
     {
